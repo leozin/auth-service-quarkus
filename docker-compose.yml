@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  service:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "database"
+    environment:
+      AUTH_DB_USER: dc_authsvcuser
+      AUTH_DB_PASS: dc_authsvcpass
+      AUTH_DB_HOST: database
+      AUTH_DB_NAME: dc_authservicedb
+  database:
+    image: "postgres:13.2"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: dc_authsvcuser
+      POSTGRES_PASSWORD: dc_authsvcpass
+      POSTGRES_DB: dc_authservicedb
