@@ -1,4 +1,4 @@
-# Auth Service
+# Authentication Service
 
 This service is responsible for managing users credentials and sessions by generating JWT tokens in order to access specific, protected services with sensible information.  
 
@@ -19,7 +19,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 #### Running the Service after building it
 
-There are many ways to run it: For a quick test with all required resources loaded automatically, in a docker environment or simply running pointing to a specific database/running instance.
+There are many ways to run it: For a quick test with all required resources loaded automatically, in a docker environment or simply running pointing to a specific database/running instance.  Please see below and pick your preferred way to run it.
 
 Once it is running, you can check the `http://localhost:8080/swagger-ui` to invoke the endpoints
 
@@ -57,18 +57,18 @@ It will start both auth-service and database, in prod mode. If the container is 
 
 ### Unit Testing
 Totally isolated, swift sociable tests using classical TDD where only external dependencies are mocked/stubbed/faked (eg database, encryption service).
-Used more for development, in order to get quick feedback if something got broken etc.
+Used more for development, in order to get quick feedback if something is broken etc.
 For context: https://martinfowler.com/articles/2021-test-shapes.html
 
 In order to run them: `./mvnw test`
 
 ### Integration Testing
-Testing only integration layers (eg repositories, hashing classes). They don't have any business logic, just enough code to interact to external dependencies and ensure their behaviours is what the classes are expecting.
+Testing only integration layers (eg repositories, hashing classes etc). They don't have any business logic, just enough code to interact to external dependencies and ensure the connecting classes are calling the right methods and the behaviour is what we expect.
 
 Command: `./mvnw verify -Pintegration`
 
 ### Acceptance Testing
-An end-to-end test suite, where HTTP calls are made against a local, running instance of auth-service. It will access a PostgreSQL instance, a Bcrypt hashing and will validate JWT tokens/calls. 
+An end-to-end test suite, where HTTP calls are made against a local, running instance of auth-service. It will access a PostgreSQL instance, a Bcrypt hashing implementation and will validate JWT tokens/calls. 
 
 Command: `./mvnw verify -Pacceptance`
 
@@ -76,7 +76,7 @@ Command: `./mvnw verify -Pacceptance`
 Command: `./mvnw verify -Pall`
 
 ### Sanity/Smoke Testing
-A test against a running remote instance. It can be used to check if a staging/prod env is running and doing a basic operation and checking the health endpoints.
+A test against a running remote instance. It can be used to check if a staging/prod env is running, to execute a basic operation and to check health endpoints.
 
 Command: `./mvnw verify -Psanity -DAUTH_SERVICE_HOST=<hostname:port>` (default localhost:8080)
 
