@@ -1,4 +1,4 @@
-# Authentication Service
+# My Quarkus experiment - Authentication Service
 
 This service is responsible for managing users credentials and sessions by generating JWT tokens in order to access specific, protected services with sensible information.  
 
